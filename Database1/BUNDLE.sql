@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[BUNDLE]
+(
+	[name] VARCHAR(50) NOT NULL PRIMARY KEY, 
+    [price] MONEY NULL
+)
