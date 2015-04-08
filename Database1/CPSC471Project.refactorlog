@@ -105,4 +105,81 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="gamer_username" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="88213c91-e307-4fcf-aeef-84115d117a93" ChangeDateTime="04/08/2015 00:47:48">
+    <Property Name="ElementName" Value="[dbo].[GAMER_ACHIEVES].[game_title]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[GAMER_ACHIEVES]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ach_game_title" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="09496523-3dbd-4811-a127-1b3fc9d7e32e" ChangeDateTime="04/08/2015 00:47:52">
+    <Property Name="ElementName" Value="[dbo].[GAMER_ACHIEVES].[game_release_date]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[GAMER_ACHIEVES]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ach_game_release_date" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="fbfc8933-42d1-4fd9-84c0-28958080394a" ChangeDateTime="04/08/2015 00:53:25">
+    <Property Name="ElementName" Value="[dbo].[GAMER_FRIENDS].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[GAMER_FRIENDS]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="gamer_username" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c363b4ca-4a08-4e78-806b-9bd1f4be6726" ChangeDateTime="04/08/2015 00:56:13">
+    <Property Name="ElementName" Value="[dbo].[PURCHASE_OF_BUNDLE].[gamer_username]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PURCHASE_OF_BUNDLE]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="purchase_gamer_username" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c49be295-fe6a-4782-9a34-f131581cd4f5" ChangeDateTime="04/08/2015 00:56:19">
+    <Property Name="ElementName" Value="[dbo].[PURCHASE_OF_BUNDLE].[date_time]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PURCHASE_OF_BUNDLE]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="purchase_date_time" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6c21d731-29f0-4662-9c31-874e76256b10" ChangeDateTime="04/08/2015 00:56:30">
+    <Property Name="ElementName" Value="[dbo].[PURCHASE_OF_BUNDLE].[amount]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PURCHASE_OF_BUNDLE]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="bundle_name" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="bfb6228a-48b9-4361-a67a-4dcf43dcc450" ChangeDateTime="04/08/2015 01:19:20">
+    <Property Name="ElementName" Value="[dbo].[PURCHASE_OF_DLC].[game_release_date]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PURCHASE_OF_DLC]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="dlc_game_release_date" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0864c4fa-8af1-4d68-b954-7775f1667126" ChangeDateTime="04/08/2015 01:19:25">
+    <Property Name="ElementName" Value="[dbo].[PURCHASE_OF_DLC].[title]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PURCHASE_OF_DLC]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="dlc_title" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9386bb94-ac29-4642-999d-8ee60f95c97f" ChangeDateTime="04/08/2015 01:19:32">
+    <Property Name="ElementName" Value="[dbo].[PURCHASE_OF_DLC].[release_date]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PURCHASE_OF_DLC]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="dlc_release_date" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="40202eef-da5a-4be4-a4f9-2b26d6bc6064" ChangeDateTime="04/08/2015 01:24:10">
+    <Property Name="ElementName" Value="[dbo].[PURCHASE_OF_GAME].[dlc_game_title]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PURCHASE_OF_GAME]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="game_title" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="43408962-a6ed-4946-94c3-cff6b2a57971" ChangeDateTime="04/08/2015 01:24:12">
+    <Property Name="ElementName" Value="[dbo].[PURCHASE_OF_GAME].[dlc_game_release_date]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PURCHASE_OF_GAME]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="game_release_date" />
+  </Operation>
 </Operations>

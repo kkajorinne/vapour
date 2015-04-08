@@ -6,6 +6,6 @@
     [last_name] VARCHAR(50) NULL, 
     [password] VARCHAR(50) NOT NULL, 
     [email] VARCHAR(50) NOT NULL, 
-    [registration_ts] DATETIME NOT NULL default CURRENT_TIMESTAMP, 
+    [registration_ts] DATETIME NOT NULL , 
     [birth_date] DATE NULL 
 )

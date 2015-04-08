@@ -64,6 +64,18 @@
     <Build Include="GAMER.sql" />
     <Build Include="DEV.sql" />
     <Build Include="BUNDLE.sql" />
+    <Build Include="DLC.sql" />
+    <Build Include="GAME.sql" />
+    <Build Include="ADMIN.sql" />
+    <Build Include="PURCHASE.sql" />
+    <Build Include="ACHIEVEMENT.sql" />
+    <Build Include="BUNDLE_OF_GAME.sql" />
+    <Build Include="BUNDLE_OF_DLC.sql" />
+    <Build Include="PURCHASE_OF_BUNDLE.sql" />
+    <Build Include="PURCHASE_OF_DLC.sql" />
+    <Build Include="PURCHASE_OF_GAME.sql" />
+    <Build Include="GAMER_ACHIEVE.sql" />
+    <Build Include="GAMER_FRIEND.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CPSC471Project.refactorlog" />
