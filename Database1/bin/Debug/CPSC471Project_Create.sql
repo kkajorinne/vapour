@@ -181,19 +181,17 @@ IF fulltextserviceproperty(N'IsFulltextInstalled') = 1
 
 
 GO
-PRINT N'Creating [dbo].[GAMER]...';
+PRINT N'Creating [dbo].[ADMIN]...';
 
 
 GO
-CREATE TABLE [dbo].[GAMER] (
-    [username]        VARCHAR (50) NOT NULL,
-    [first_name]      VARCHAR (50) NULL,
-    [middle_names]    VARCHAR (50) NULL,
-    [last_name]       VARCHAR (50) NULL,
-    [password]        VARCHAR (50) NULL,
-    [email]           VARCHAR (50) NULL,
-    [registration_ts] TIMESTAMP    NULL,
-    [birth_date]      DATE         NULL,
+CREATE TABLE [dbo].[ADMIN] (
+    [username]     VARCHAR (50) NOT NULL,
+    [first_name]   VARCHAR (50) NULL,
+    [middle_names] VARCHAR (50) NULL,
+    [last_name]    VARCHAR (50) NULL,
+    [password]     VARCHAR (50) NOT NULL,
+    [email]        VARCHAR (50) NOT NULL,
     PRIMARY KEY CLUSTERED ([username] ASC)
 );
 
@@ -204,9 +202,406 @@ PRINT N'Creating [dbo].[DEV]...';
 
 GO
 CREATE TABLE [dbo].[DEV] (
-    [username] NVARCHAR (50) NOT NULL,
+    [username] VARCHAR (50) NOT NULL,
+    [password] VARCHAR (50) NOT NULL,
+    [email]    VARCHAR (50) NOT NULL,
+    [company]  VARCHAR (50) NULL,
     PRIMARY KEY CLUSTERED ([username] ASC)
 );
+
+
+GO
+PRINT N'Creating [dbo].[GAMER]...';
+
+
+GO
+CREATE TABLE [dbo].[GAMER] (
+    [username]        VARCHAR (50) NOT NULL,
+    [first_name]      VARCHAR (50) NULL,
+    [middle_names]    VARCHAR (50) NULL,
+    [last_name]       VARCHAR (50) NULL,
+    [password]        VARCHAR (50) NOT NULL,
+    [email]           VARCHAR (50) NOT NULL,
+    [registration_ts] DATETIME     NOT NULL,
+    [birth_date]      DATE         NULL,
+    PRIMARY KEY CLUSTERED ([username] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[ACHIEVEMENT]...';
+
+
+GO
+CREATE TABLE [dbo].[ACHIEVEMENT] (
+    [game_title]        VARCHAR (50)  NOT NULL,
+    [game_release_date] DATE          NOT NULL,
+    [title]             VARCHAR (50)  NOT NULL,
+    [description]       VARCHAR (MAX) NULL,
+    PRIMARY KEY CLUSTERED ([game_title] ASC, [game_release_date] ASC, [title] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[BUNDLE]...';
+
+
+GO
+CREATE TABLE [dbo].[BUNDLE] (
+    [name]         VARCHAR (50) NOT NULL,
+    [price]        MONEY        NULL,
+    [dev_username] VARCHAR (50) NULL,
+    PRIMARY KEY CLUSTERED ([name] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[BUNDLE_OF_GAME]...';
+
+
+GO
+CREATE TABLE [dbo].[BUNDLE_OF_GAME] (
+    [bundle_name]       VARCHAR (50) NOT NULL,
+    [game_title]        VARCHAR (50) NOT NULL,
+    [game_release_date] DATE         NOT NULL,
+    PRIMARY KEY CLUSTERED ([bundle_name] ASC, [game_title] ASC, [game_release_date] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[BUNDLE_OF_DLC]...';
+
+
+GO
+CREATE TABLE [dbo].[BUNDLE_OF_DLC] (
+    [bundle_name]           VARCHAR (50) NOT NULL,
+    [dlc_game_title]        VARCHAR (50) NOT NULL,
+    [dlc_game_release_date] DATE         NOT NULL,
+    [dlc_title]             VARCHAR (50) NOT NULL,
+    [dlc_release_date]      DATE         NOT NULL,
+    PRIMARY KEY CLUSTERED ([bundle_name] ASC, [dlc_game_title] ASC, [dlc_game_release_date] ASC, [dlc_title] ASC, [dlc_release_date] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[GAME]...';
+
+
+GO
+CREATE TABLE [dbo].[GAME] (
+    [title]          VARCHAR (50)  NOT NULL,
+    [release_date]   DATE          NOT NULL,
+    [genres]         VARCHAR (50)  NULL,
+    [price]          MONEY         NULL,
+    [ESRB]           VARCHAR (50)  NULL,
+    [description]    VARCHAR (MAX) NULL,
+    [data]           VARCHAR (50)  NULL,
+    [admin_username] VARCHAR (50)  NULL,
+    [dev_username]   VARCHAR (50)  NULL,
+    PRIMARY KEY CLUSTERED ([title] ASC, [release_date] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[DLC]...';
+
+
+GO
+CREATE TABLE [dbo].[DLC] (
+    [game_title]        VARCHAR (50)  NOT NULL,
+    [game_release_date] DATE          NOT NULL,
+    [title]             VARCHAR (50)  NOT NULL,
+    [release_date]      DATE          NOT NULL,
+    [genres]            VARCHAR (50)  NULL,
+    [price]             MONEY         NULL,
+    [ESRB]              VARCHAR (50)  NULL,
+    [description]       VARCHAR (MAX) NULL,
+    [data]              VARCHAR (50)  NULL,
+    [admin_username]    VARCHAR (50)  NULL,
+    [dev_username]      VARCHAR (50)  NULL,
+    PRIMARY KEY CLUSTERED ([game_title] ASC, [game_release_date] ASC, [title] ASC, [release_date] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[GAMER_ACHIEVES]...';
+
+
+GO
+CREATE TABLE [dbo].[GAMER_ACHIEVES] (
+    [gamer_username]        VARCHAR (50) NOT NULL,
+    [ach_game_title]        VARCHAR (50) NOT NULL,
+    [ach_game_release_date] DATE         NOT NULL,
+    [ach_title]             VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([ach_game_title] ASC, [ach_game_release_date] ASC, [ach_title] ASC, [gamer_username] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[GAMER_FRIENDS]...';
+
+
+GO
+CREATE TABLE [dbo].[GAMER_FRIENDS] (
+    [gamer_username]        VARCHAR (50) NOT NULL,
+    [gamer_username_friend] VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([gamer_username] ASC, [gamer_username_friend] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[PURCHASE]...';
+
+
+GO
+CREATE TABLE [dbo].[PURCHASE] (
+    [gamer_username] VARCHAR (50) NOT NULL,
+    [date_time]      DATETIME     NOT NULL,
+    [amount]         MONEY        NOT NULL,
+    [method]         VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([gamer_username] ASC, [date_time] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[PURCHASE_OF_GAME]...';
+
+
+GO
+CREATE TABLE [dbo].[PURCHASE_OF_GAME] (
+    [purchase_gamer_username] VARCHAR (50) NOT NULL,
+    [purchase_date_time]      DATETIME     NOT NULL,
+    [game_title]              VARCHAR (50) NOT NULL,
+    [game_release_date]       DATE         NOT NULL,
+    PRIMARY KEY CLUSTERED ([purchase_gamer_username] ASC, [purchase_date_time] ASC, [game_title] ASC, [game_release_date] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[PURCHASE_OF_DLC]...';
+
+
+GO
+CREATE TABLE [dbo].[PURCHASE_OF_DLC] (
+    [purchase_gamer_username] VARCHAR (50) NOT NULL,
+    [purchase_date_time]      DATETIME     NOT NULL,
+    [dlc_game_title]          VARCHAR (50) NOT NULL,
+    [dlc_game_release_date]   DATE         NOT NULL,
+    [dlc_title]               VARCHAR (50) NOT NULL,
+    [dlc_release_date]        DATE         NOT NULL,
+    PRIMARY KEY CLUSTERED ([purchase_gamer_username] ASC, [purchase_date_time] ASC, [dlc_game_title] ASC, [dlc_game_release_date] ASC, [dlc_title] ASC, [dlc_release_date] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[PURCHASE_OF_BUNDLE]...';
+
+
+GO
+CREATE TABLE [dbo].[PURCHASE_OF_BUNDLE] (
+    [purchase_gamer_username] VARCHAR (50) NOT NULL,
+    [purchase_date_time]      DATETIME     NOT NULL,
+    [bundle_name]             VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([purchase_gamer_username] ASC, [purchase_date_time] ASC, [bundle_name] ASC)
+);
+
+
+GO
+PRINT N'Creating FK_ACHIEVEMENT_game...';
+
+
+GO
+ALTER TABLE [dbo].[ACHIEVEMENT]
+    ADD CONSTRAINT [FK_ACHIEVEMENT_game] FOREIGN KEY ([game_title], [game_release_date]) REFERENCES [dbo].[GAME] ([title], [release_date]);
+
+
+GO
+PRINT N'Creating FK_BUNDLE_dev...';
+
+
+GO
+ALTER TABLE [dbo].[BUNDLE]
+    ADD CONSTRAINT [FK_BUNDLE_dev] FOREIGN KEY ([dev_username]) REFERENCES [dbo].[DEV] ([username]);
+
+
+GO
+PRINT N'Creating FK_BUNDLE_OF_GAME_bundle...';
+
+
+GO
+ALTER TABLE [dbo].[BUNDLE_OF_GAME]
+    ADD CONSTRAINT [FK_BUNDLE_OF_GAME_bundle] FOREIGN KEY ([bundle_name]) REFERENCES [dbo].[BUNDLE] ([name]);
+
+
+GO
+PRINT N'Creating FK_BUNDLE_OF_GAME_game...';
+
+
+GO
+ALTER TABLE [dbo].[BUNDLE_OF_GAME]
+    ADD CONSTRAINT [FK_BUNDLE_OF_GAME_game] FOREIGN KEY ([game_title], [game_release_date]) REFERENCES [dbo].[GAME] ([title], [release_date]);
+
+
+GO
+PRINT N'Creating FK_BUNDLE_OF_DLC_bundle...';
+
+
+GO
+ALTER TABLE [dbo].[BUNDLE_OF_DLC]
+    ADD CONSTRAINT [FK_BUNDLE_OF_DLC_bundle] FOREIGN KEY ([bundle_name]) REFERENCES [dbo].[BUNDLE] ([name]);
+
+
+GO
+PRINT N'Creating FK_BUNDLE_OF_DLC_dlc...';
+
+
+GO
+ALTER TABLE [dbo].[BUNDLE_OF_DLC]
+    ADD CONSTRAINT [FK_BUNDLE_OF_DLC_dlc] FOREIGN KEY ([dlc_game_title], [dlc_game_release_date], [dlc_title], [dlc_release_date]) REFERENCES [dbo].[DLC] ([game_title], [game_release_date], [title], [release_date]);
+
+
+GO
+PRINT N'Creating FK_GAME_admin...';
+
+
+GO
+ALTER TABLE [dbo].[GAME]
+    ADD CONSTRAINT [FK_GAME_admin] FOREIGN KEY ([admin_username]) REFERENCES [dbo].[ADMIN] ([username]);
+
+
+GO
+PRINT N'Creating FK_GAME_dev...';
+
+
+GO
+ALTER TABLE [dbo].[GAME]
+    ADD CONSTRAINT [FK_GAME_dev] FOREIGN KEY ([dev_username]) REFERENCES [dbo].[DEV] ([username]);
+
+
+GO
+PRINT N'Creating FK_DLC_game...';
+
+
+GO
+ALTER TABLE [dbo].[DLC]
+    ADD CONSTRAINT [FK_DLC_game] FOREIGN KEY ([game_title], [game_release_date]) REFERENCES [dbo].[GAME] ([title], [release_date]);
+
+
+GO
+PRINT N'Creating FK_DLC_admin...';
+
+
+GO
+ALTER TABLE [dbo].[DLC]
+    ADD CONSTRAINT [FK_DLC_admin] FOREIGN KEY ([admin_username]) REFERENCES [dbo].[ADMIN] ([username]);
+
+
+GO
+PRINT N'Creating FK_DLC_dev...';
+
+
+GO
+ALTER TABLE [dbo].[DLC]
+    ADD CONSTRAINT [FK_DLC_dev] FOREIGN KEY ([dev_username]) REFERENCES [dbo].[DEV] ([username]);
+
+
+GO
+PRINT N'Creating FK_GAMER_ACHIEVE_gamer...';
+
+
+GO
+ALTER TABLE [dbo].[GAMER_ACHIEVES]
+    ADD CONSTRAINT [FK_GAMER_ACHIEVE_gamer] FOREIGN KEY ([gamer_username]) REFERENCES [dbo].[GAMER] ([username]);
+
+
+GO
+PRINT N'Creating FK_GAMER_ACHIEVE_achievement...';
+
+
+GO
+ALTER TABLE [dbo].[GAMER_ACHIEVES]
+    ADD CONSTRAINT [FK_GAMER_ACHIEVE_achievement] FOREIGN KEY ([ach_game_title], [ach_game_release_date], [ach_title]) REFERENCES [dbo].[ACHIEVEMENT] ([game_title], [game_release_date], [title]);
+
+
+GO
+PRINT N'Creating FK_GAMER_friend...';
+
+
+GO
+ALTER TABLE [dbo].[GAMER_FRIENDS]
+    ADD CONSTRAINT [FK_GAMER_friend] FOREIGN KEY ([gamer_username]) REFERENCES [dbo].[GAMER] ([username]);
+
+
+GO
+PRINT N'Creating FK_GAMER_friend_of...';
+
+
+GO
+ALTER TABLE [dbo].[GAMER_FRIENDS]
+    ADD CONSTRAINT [FK_GAMER_friend_of] FOREIGN KEY ([gamer_username_friend]) REFERENCES [dbo].[GAMER] ([username]);
+
+
+GO
+PRINT N'Creating FK_PURCHASE_gamer...';
+
+
+GO
+ALTER TABLE [dbo].[PURCHASE]
+    ADD CONSTRAINT [FK_PURCHASE_gamer] FOREIGN KEY ([gamer_username]) REFERENCES [dbo].[GAMER] ([username]);
+
+
+GO
+PRINT N'Creating FK_PURCHASE_OF_GAME_purchase...';
+
+
+GO
+ALTER TABLE [dbo].[PURCHASE_OF_GAME]
+    ADD CONSTRAINT [FK_PURCHASE_OF_GAME_purchase] FOREIGN KEY ([purchase_gamer_username], [purchase_date_time]) REFERENCES [dbo].[PURCHASE] ([gamer_username], [date_time]);
+
+
+GO
+PRINT N'Creating FK_PURCHASE_OF_GAME_game...';
+
+
+GO
+ALTER TABLE [dbo].[PURCHASE_OF_GAME]
+    ADD CONSTRAINT [FK_PURCHASE_OF_GAME_game] FOREIGN KEY ([game_title], [game_release_date]) REFERENCES [dbo].[GAME] ([title], [release_date]);
+
+
+GO
+PRINT N'Creating FK_PURCHASE_OF_DLC_purchase...';
+
+
+GO
+ALTER TABLE [dbo].[PURCHASE_OF_DLC]
+    ADD CONSTRAINT [FK_PURCHASE_OF_DLC_purchase] FOREIGN KEY ([purchase_gamer_username], [purchase_date_time]) REFERENCES [dbo].[PURCHASE] ([gamer_username], [date_time]);
+
+
+GO
+PRINT N'Creating FK_PURCHASE_OF_DLC_dlc...';
+
+
+GO
+ALTER TABLE [dbo].[PURCHASE_OF_DLC]
+    ADD CONSTRAINT [FK_PURCHASE_OF_DLC_dlc] FOREIGN KEY ([dlc_game_title], [dlc_game_release_date], [dlc_title], [dlc_release_date]) REFERENCES [dbo].[DLC] ([game_title], [game_release_date], [title], [release_date]);
+
+
+GO
+PRINT N'Creating FK_PURCHASE_OF_BUNDLE_purchase...';
+
+
+GO
+ALTER TABLE [dbo].[PURCHASE_OF_BUNDLE]
+    ADD CONSTRAINT [FK_PURCHASE_OF_BUNDLE_purchase] FOREIGN KEY ([purchase_gamer_username], [purchase_date_time]) REFERENCES [dbo].[PURCHASE] ([gamer_username], [date_time]);
+
+
+GO
+PRINT N'Creating FK_PURCHASE_OF_BUNDLE_bundle...';
+
+
+GO
+ALTER TABLE [dbo].[PURCHASE_OF_BUNDLE]
+    ADD CONSTRAINT [FK_PURCHASE_OF_BUNDLE_bundle] FOREIGN KEY ([bundle_name]) REFERENCES [dbo].[BUNDLE] ([name]);
 
 
 GO
@@ -224,6 +619,52 @@ IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey
 INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('23378012-d839-43fe-afae-36ac56be3e21')
 IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'ee4ce9db-76cc-49ac-be23-0f923be227e4')
 INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('ee4ce9db-76cc-49ac-be23-0f923be227e4')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'de634e1d-b96d-4b65-849f-0973b1c1de64')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('de634e1d-b96d-4b65-849f-0973b1c1de64')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '70cc93cb-8e94-4e8e-839a-c945df09278b')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('70cc93cb-8e94-4e8e-839a-c945df09278b')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'e25fabd2-cce3-479e-922a-91c2ae5957d7')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('e25fabd2-cce3-479e-922a-91c2ae5957d7')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'a362c7cc-ee36-4f16-8a71-56f2b7fdc57b')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('a362c7cc-ee36-4f16-8a71-56f2b7fdc57b')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'feffc9e7-96c3-45d8-8d42-8bb78e093b66')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('feffc9e7-96c3-45d8-8d42-8bb78e093b66')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'e5226783-f3ad-4e28-8a16-0f14d41bb4d5')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('e5226783-f3ad-4e28-8a16-0f14d41bb4d5')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '07e4cf58-9d11-4db7-a203-3148a20a9ff4')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('07e4cf58-9d11-4db7-a203-3148a20a9ff4')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '9a472602-b6f1-49ca-9cb0-1e9a7b28524f')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('9a472602-b6f1-49ca-9cb0-1e9a7b28524f')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '0c7f3236-a56e-4975-aef8-304ce4329db2')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('0c7f3236-a56e-4975-aef8-304ce4329db2')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '907cd577-99f5-40b8-9e61-c995aeff6be7')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('907cd577-99f5-40b8-9e61-c995aeff6be7')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'c801b388-5473-4890-9098-95eaa383776a')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('c801b388-5473-4890-9098-95eaa383776a')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'a47af491-3d2d-49d7-9e87-49bedc7500e4')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('a47af491-3d2d-49d7-9e87-49bedc7500e4')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '88213c91-e307-4fcf-aeef-84115d117a93')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('88213c91-e307-4fcf-aeef-84115d117a93')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '09496523-3dbd-4811-a127-1b3fc9d7e32e')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('09496523-3dbd-4811-a127-1b3fc9d7e32e')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'fbfc8933-42d1-4fd9-84c0-28958080394a')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('fbfc8933-42d1-4fd9-84c0-28958080394a')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'c363b4ca-4a08-4e78-806b-9bd1f4be6726')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('c363b4ca-4a08-4e78-806b-9bd1f4be6726')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'c49be295-fe6a-4782-9a34-f131581cd4f5')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('c49be295-fe6a-4782-9a34-f131581cd4f5')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '6c21d731-29f0-4662-9c31-874e76256b10')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('6c21d731-29f0-4662-9c31-874e76256b10')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'bfb6228a-48b9-4361-a67a-4dcf43dcc450')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('bfb6228a-48b9-4361-a67a-4dcf43dcc450')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '0864c4fa-8af1-4d68-b954-7775f1667126')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('0864c4fa-8af1-4d68-b954-7775f1667126')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '9386bb94-ac29-4642-999d-8ee60f95c97f')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('9386bb94-ac29-4642-999d-8ee60f95c97f')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '40202eef-da5a-4be4-a4f9-2b26d6bc6064')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('40202eef-da5a-4be4-a4f9-2b26d6bc6064')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '43408962-a6ed-4946-94c3-cff6b2a57971')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('43408962-a6ed-4946-94c3-cff6b2a57971')
 
 GO
 

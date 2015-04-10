@@ -5,6 +5,5 @@
 	[title] VARCHAR(50) NOT NULL , 
     [description] VARCHAR(MAX) NULL, 
     PRIMARY KEY ([game_title], [game_release_date], [title]), 
-    CONSTRAINT [FK_ACHIEVEMENT_GAME_title] FOREIGN KEY (game_title) REFERENCES GAME(title),
-    CONSTRAINT [FK_ACHIEVEMENT_GAME_release_date] FOREIGN KEY (game_release_date) REFERENCES GAME(release_date) 
+    CONSTRAINT [FK_ACHIEVEMENT_game] FOREIGN KEY ([game_title], [game_release_date]) REFERENCES GAME([title], [release_date])
 )
