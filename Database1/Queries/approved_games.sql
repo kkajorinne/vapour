@@ -1,0 +1,3 @@
+SELECT *
+FROM dbo.GAME
+WHERE admin_username IS NOT NULL

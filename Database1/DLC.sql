@@ -4,7 +4,6 @@
     [game_release_date] DATE NOT NULL, 
 	[title] VARCHAR(50) NOT NULL , 
     [release_date] DATE NOT NULL, 
-    [genres] VARCHAR(50) NULL, 
     [price] MONEY NULL, 
     [ESRB] VARCHAR(50) NULL, 
     [description] VARCHAR(MAX) NULL, 

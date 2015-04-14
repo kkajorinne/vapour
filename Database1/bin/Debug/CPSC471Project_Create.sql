@@ -181,145 +181,14 @@ IF fulltextserviceproperty(N'IsFulltextInstalled') = 1
 
 
 GO
-PRINT N'Creating [dbo].[ADMIN]...';
+PRINT N'Creating [dbo].[GAMER_FRIENDS]...';
 
 
 GO
-CREATE TABLE [dbo].[ADMIN] (
-    [username]     VARCHAR (50) NOT NULL,
-    [first_name]   VARCHAR (50) NULL,
-    [middle_names] VARCHAR (50) NULL,
-    [last_name]    VARCHAR (50) NULL,
-    [password]     VARCHAR (50) NOT NULL,
-    [email]        VARCHAR (50) NOT NULL,
-    PRIMARY KEY CLUSTERED ([username] ASC)
-);
-
-
-GO
-PRINT N'Creating [dbo].[DEV]...';
-
-
-GO
-CREATE TABLE [dbo].[DEV] (
-    [username] VARCHAR (50) NOT NULL,
-    [password] VARCHAR (50) NOT NULL,
-    [email]    VARCHAR (50) NOT NULL,
-    [company]  VARCHAR (50) NULL,
-    PRIMARY KEY CLUSTERED ([username] ASC)
-);
-
-
-GO
-PRINT N'Creating [dbo].[GAMER]...';
-
-
-GO
-CREATE TABLE [dbo].[GAMER] (
-    [username]        VARCHAR (50) NOT NULL,
-    [first_name]      VARCHAR (50) NULL,
-    [middle_names]    VARCHAR (50) NULL,
-    [last_name]       VARCHAR (50) NULL,
-    [password]        VARCHAR (50) NOT NULL,
-    [email]           VARCHAR (50) NOT NULL,
-    [registration_ts] DATETIME     NOT NULL,
-    [birth_date]      DATE         NULL,
-    PRIMARY KEY CLUSTERED ([username] ASC)
-);
-
-
-GO
-PRINT N'Creating [dbo].[ACHIEVEMENT]...';
-
-
-GO
-CREATE TABLE [dbo].[ACHIEVEMENT] (
-    [game_title]        VARCHAR (50)  NOT NULL,
-    [game_release_date] DATE          NOT NULL,
-    [title]             VARCHAR (50)  NOT NULL,
-    [description]       VARCHAR (MAX) NULL,
-    PRIMARY KEY CLUSTERED ([game_title] ASC, [game_release_date] ASC, [title] ASC)
-);
-
-
-GO
-PRINT N'Creating [dbo].[BUNDLE]...';
-
-
-GO
-CREATE TABLE [dbo].[BUNDLE] (
-    [name]         VARCHAR (50) NOT NULL,
-    [price]        MONEY        NULL,
-    [dev_username] VARCHAR (50) NULL,
-    PRIMARY KEY CLUSTERED ([name] ASC)
-);
-
-
-GO
-PRINT N'Creating [dbo].[BUNDLE_OF_GAME]...';
-
-
-GO
-CREATE TABLE [dbo].[BUNDLE_OF_GAME] (
-    [bundle_name]       VARCHAR (50) NOT NULL,
-    [game_title]        VARCHAR (50) NOT NULL,
-    [game_release_date] DATE         NOT NULL,
-    PRIMARY KEY CLUSTERED ([bundle_name] ASC, [game_title] ASC, [game_release_date] ASC)
-);
-
-
-GO
-PRINT N'Creating [dbo].[BUNDLE_OF_DLC]...';
-
-
-GO
-CREATE TABLE [dbo].[BUNDLE_OF_DLC] (
-    [bundle_name]           VARCHAR (50) NOT NULL,
-    [dlc_game_title]        VARCHAR (50) NOT NULL,
-    [dlc_game_release_date] DATE         NOT NULL,
-    [dlc_title]             VARCHAR (50) NOT NULL,
-    [dlc_release_date]      DATE         NOT NULL,
-    PRIMARY KEY CLUSTERED ([bundle_name] ASC, [dlc_game_title] ASC, [dlc_game_release_date] ASC, [dlc_title] ASC, [dlc_release_date] ASC)
-);
-
-
-GO
-PRINT N'Creating [dbo].[GAME]...';
-
-
-GO
-CREATE TABLE [dbo].[GAME] (
-    [title]          VARCHAR (50)  NOT NULL,
-    [release_date]   DATE          NOT NULL,
-    [genres]         VARCHAR (50)  NULL,
-    [price]          MONEY         NULL,
-    [ESRB]           VARCHAR (50)  NULL,
-    [description]    VARCHAR (MAX) NULL,
-    [data]           VARCHAR (50)  NULL,
-    [admin_username] VARCHAR (50)  NULL,
-    [dev_username]   VARCHAR (50)  NULL,
-    PRIMARY KEY CLUSTERED ([title] ASC, [release_date] ASC)
-);
-
-
-GO
-PRINT N'Creating [dbo].[DLC]...';
-
-
-GO
-CREATE TABLE [dbo].[DLC] (
-    [game_title]        VARCHAR (50)  NOT NULL,
-    [game_release_date] DATE          NOT NULL,
-    [title]             VARCHAR (50)  NOT NULL,
-    [release_date]      DATE          NOT NULL,
-    [genres]            VARCHAR (50)  NULL,
-    [price]             MONEY         NULL,
-    [ESRB]              VARCHAR (50)  NULL,
-    [description]       VARCHAR (MAX) NULL,
-    [data]              VARCHAR (50)  NULL,
-    [admin_username]    VARCHAR (50)  NULL,
-    [dev_username]      VARCHAR (50)  NULL,
-    PRIMARY KEY CLUSTERED ([game_title] ASC, [game_release_date] ASC, [title] ASC, [release_date] ASC)
+CREATE TABLE [dbo].[GAMER_FRIENDS] (
+    [gamer_username]        VARCHAR (50) NOT NULL,
+    [gamer_username_friend] VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([gamer_username] ASC, [gamer_username_friend] ASC)
 );
 
 
@@ -334,32 +203,6 @@ CREATE TABLE [dbo].[GAMER_ACHIEVES] (
     [ach_game_release_date] DATE         NOT NULL,
     [ach_title]             VARCHAR (50) NOT NULL,
     PRIMARY KEY CLUSTERED ([ach_game_title] ASC, [ach_game_release_date] ASC, [ach_title] ASC, [gamer_username] ASC)
-);
-
-
-GO
-PRINT N'Creating [dbo].[GAMER_FRIENDS]...';
-
-
-GO
-CREATE TABLE [dbo].[GAMER_FRIENDS] (
-    [gamer_username]        VARCHAR (50) NOT NULL,
-    [gamer_username_friend] VARCHAR (50) NOT NULL,
-    PRIMARY KEY CLUSTERED ([gamer_username] ASC, [gamer_username_friend] ASC)
-);
-
-
-GO
-PRINT N'Creating [dbo].[PURCHASE]...';
-
-
-GO
-CREATE TABLE [dbo].[PURCHASE] (
-    [gamer_username] VARCHAR (50) NOT NULL,
-    [date_time]      DATETIME     NOT NULL,
-    [amount]         MONEY        NOT NULL,
-    [method]         VARCHAR (50) NOT NULL,
-    PRIMARY KEY CLUSTERED ([gamer_username] ASC, [date_time] ASC)
 );
 
 
@@ -407,120 +250,159 @@ CREATE TABLE [dbo].[PURCHASE_OF_BUNDLE] (
 
 
 GO
-PRINT N'Creating FK_ACHIEVEMENT_game...';
+PRINT N'Creating [dbo].[BUNDLE_OF_DLC]...';
 
 
 GO
-ALTER TABLE [dbo].[ACHIEVEMENT]
-    ADD CONSTRAINT [FK_ACHIEVEMENT_game] FOREIGN KEY ([game_title], [game_release_date]) REFERENCES [dbo].[GAME] ([title], [release_date]);
+CREATE TABLE [dbo].[BUNDLE_OF_DLC] (
+    [bundle_name]           VARCHAR (50) NOT NULL,
+    [dlc_game_title]        VARCHAR (50) NOT NULL,
+    [dlc_game_release_date] DATE         NOT NULL,
+    [dlc_title]             VARCHAR (50) NOT NULL,
+    [dlc_release_date]      DATE         NOT NULL,
+    PRIMARY KEY CLUSTERED ([bundle_name] ASC, [dlc_game_title] ASC, [dlc_game_release_date] ASC, [dlc_title] ASC, [dlc_release_date] ASC)
+);
 
 
 GO
-PRINT N'Creating FK_BUNDLE_dev...';
+PRINT N'Creating [dbo].[BUNDLE_OF_GAME]...';
 
 
 GO
-ALTER TABLE [dbo].[BUNDLE]
-    ADD CONSTRAINT [FK_BUNDLE_dev] FOREIGN KEY ([dev_username]) REFERENCES [dbo].[DEV] ([username]);
+CREATE TABLE [dbo].[BUNDLE_OF_GAME] (
+    [bundle_name]       VARCHAR (50) NOT NULL,
+    [game_title]        VARCHAR (50) NOT NULL,
+    [game_release_date] DATE         NOT NULL,
+    PRIMARY KEY CLUSTERED ([bundle_name] ASC, [game_title] ASC, [game_release_date] ASC)
+);
 
 
 GO
-PRINT N'Creating FK_BUNDLE_OF_GAME_bundle...';
+PRINT N'Creating [dbo].[ACHIEVEMENT]...';
 
 
 GO
-ALTER TABLE [dbo].[BUNDLE_OF_GAME]
-    ADD CONSTRAINT [FK_BUNDLE_OF_GAME_bundle] FOREIGN KEY ([bundle_name]) REFERENCES [dbo].[BUNDLE] ([name]);
+CREATE TABLE [dbo].[ACHIEVEMENT] (
+    [game_title]        VARCHAR (50)  NOT NULL,
+    [game_release_date] DATE          NOT NULL,
+    [title]             VARCHAR (50)  NOT NULL,
+    [description]       VARCHAR (MAX) NULL,
+    PRIMARY KEY CLUSTERED ([game_title] ASC, [game_release_date] ASC, [title] ASC)
+);
 
 
 GO
-PRINT N'Creating FK_BUNDLE_OF_GAME_game...';
+PRINT N'Creating [dbo].[PURCHASE]...';
 
 
 GO
-ALTER TABLE [dbo].[BUNDLE_OF_GAME]
-    ADD CONSTRAINT [FK_BUNDLE_OF_GAME_game] FOREIGN KEY ([game_title], [game_release_date]) REFERENCES [dbo].[GAME] ([title], [release_date]);
+CREATE TABLE [dbo].[PURCHASE] (
+    [gamer_username] VARCHAR (50) NOT NULL,
+    [date_time]      DATETIME     NOT NULL,
+    [amount]         MONEY        NOT NULL,
+    [method]         VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([gamer_username] ASC, [date_time] ASC)
+);
 
 
 GO
-PRINT N'Creating FK_BUNDLE_OF_DLC_bundle...';
+PRINT N'Creating [dbo].[ADMIN]...';
 
 
 GO
-ALTER TABLE [dbo].[BUNDLE_OF_DLC]
-    ADD CONSTRAINT [FK_BUNDLE_OF_DLC_bundle] FOREIGN KEY ([bundle_name]) REFERENCES [dbo].[BUNDLE] ([name]);
+CREATE TABLE [dbo].[ADMIN] (
+    [username]     VARCHAR (50) NOT NULL,
+    [first_name]   VARCHAR (50) NULL,
+    [middle_names] VARCHAR (50) NULL,
+    [last_name]    VARCHAR (50) NULL,
+    [password]     VARCHAR (50) NOT NULL,
+    [email]        VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([username] ASC)
+);
 
 
 GO
-PRINT N'Creating FK_BUNDLE_OF_DLC_dlc...';
+PRINT N'Creating [dbo].[GAME]...';
 
 
 GO
-ALTER TABLE [dbo].[BUNDLE_OF_DLC]
-    ADD CONSTRAINT [FK_BUNDLE_OF_DLC_dlc] FOREIGN KEY ([dlc_game_title], [dlc_game_release_date], [dlc_title], [dlc_release_date]) REFERENCES [dbo].[DLC] ([game_title], [game_release_date], [title], [release_date]);
+CREATE TABLE [dbo].[GAME] (
+    [title]          VARCHAR (50)  NOT NULL,
+    [release_date]   DATE          NOT NULL,
+    [genres]         VARCHAR (50)  NULL,
+    [price]          MONEY         NULL,
+    [ESRB]           VARCHAR (50)  NULL,
+    [description]    VARCHAR (MAX) NULL,
+    [data]           VARCHAR (50)  NULL,
+    [admin_username] VARCHAR (50)  NULL,
+    [dev_username]   VARCHAR (50)  NULL,
+    PRIMARY KEY CLUSTERED ([title] ASC, [release_date] ASC)
+);
 
 
 GO
-PRINT N'Creating FK_GAME_admin...';
+PRINT N'Creating [dbo].[DLC]...';
 
 
 GO
-ALTER TABLE [dbo].[GAME]
-    ADD CONSTRAINT [FK_GAME_admin] FOREIGN KEY ([admin_username]) REFERENCES [dbo].[ADMIN] ([username]);
+CREATE TABLE [dbo].[DLC] (
+    [game_title]        VARCHAR (50)  NOT NULL,
+    [game_release_date] DATE          NOT NULL,
+    [title]             VARCHAR (50)  NOT NULL,
+    [release_date]      DATE          NOT NULL,
+    [price]             MONEY         NULL,
+    [ESRB]              VARCHAR (50)  NULL,
+    [description]       VARCHAR (MAX) NULL,
+    [data]              VARCHAR (50)  NULL,
+    [admin_username]    VARCHAR (50)  NULL,
+    [dev_username]      VARCHAR (50)  NULL,
+    PRIMARY KEY CLUSTERED ([game_title] ASC, [game_release_date] ASC, [title] ASC, [release_date] ASC)
+);
 
 
 GO
-PRINT N'Creating FK_GAME_dev...';
+PRINT N'Creating [dbo].[BUNDLE]...';
 
 
 GO
-ALTER TABLE [dbo].[GAME]
-    ADD CONSTRAINT [FK_GAME_dev] FOREIGN KEY ([dev_username]) REFERENCES [dbo].[DEV] ([username]);
+CREATE TABLE [dbo].[BUNDLE] (
+    [name]         VARCHAR (50) NOT NULL,
+    [price]        MONEY        NULL,
+    [dev_username] VARCHAR (50) NULL,
+    PRIMARY KEY CLUSTERED ([name] ASC)
+);
 
 
 GO
-PRINT N'Creating FK_DLC_game...';
+PRINT N'Creating [dbo].[DEV]...';
 
 
 GO
-ALTER TABLE [dbo].[DLC]
-    ADD CONSTRAINT [FK_DLC_game] FOREIGN KEY ([game_title], [game_release_date]) REFERENCES [dbo].[GAME] ([title], [release_date]);
+CREATE TABLE [dbo].[DEV] (
+    [username] VARCHAR (50) NOT NULL,
+    [password] VARCHAR (50) NOT NULL,
+    [email]    VARCHAR (50) NOT NULL,
+    [company]  VARCHAR (50) NULL,
+    PRIMARY KEY CLUSTERED ([username] ASC)
+);
 
 
 GO
-PRINT N'Creating FK_DLC_admin...';
+PRINT N'Creating [dbo].[GAMER]...';
 
 
 GO
-ALTER TABLE [dbo].[DLC]
-    ADD CONSTRAINT [FK_DLC_admin] FOREIGN KEY ([admin_username]) REFERENCES [dbo].[ADMIN] ([username]);
-
-
-GO
-PRINT N'Creating FK_DLC_dev...';
-
-
-GO
-ALTER TABLE [dbo].[DLC]
-    ADD CONSTRAINT [FK_DLC_dev] FOREIGN KEY ([dev_username]) REFERENCES [dbo].[DEV] ([username]);
-
-
-GO
-PRINT N'Creating FK_GAMER_ACHIEVE_gamer...';
-
-
-GO
-ALTER TABLE [dbo].[GAMER_ACHIEVES]
-    ADD CONSTRAINT [FK_GAMER_ACHIEVE_gamer] FOREIGN KEY ([gamer_username]) REFERENCES [dbo].[GAMER] ([username]);
-
-
-GO
-PRINT N'Creating FK_GAMER_ACHIEVE_achievement...';
-
-
-GO
-ALTER TABLE [dbo].[GAMER_ACHIEVES]
-    ADD CONSTRAINT [FK_GAMER_ACHIEVE_achievement] FOREIGN KEY ([ach_game_title], [ach_game_release_date], [ach_title]) REFERENCES [dbo].[ACHIEVEMENT] ([game_title], [game_release_date], [title]);
+CREATE TABLE [dbo].[GAMER] (
+    [username]        VARCHAR (50) NOT NULL,
+    [first_name]      VARCHAR (50) NULL,
+    [middle_names]    VARCHAR (50) NULL,
+    [last_name]       VARCHAR (50) NULL,
+    [password]        VARCHAR (50) NOT NULL,
+    [email]           VARCHAR (50) NOT NULL,
+    [registration_ts] DATETIME     NOT NULL,
+    [birth_date]      DATE         NULL,
+    PRIMARY KEY CLUSTERED ([username] ASC)
+);
 
 
 GO
@@ -542,12 +424,21 @@ ALTER TABLE [dbo].[GAMER_FRIENDS]
 
 
 GO
-PRINT N'Creating FK_PURCHASE_gamer...';
+PRINT N'Creating FK_GAMER_ACHIEVE_gamer...';
 
 
 GO
-ALTER TABLE [dbo].[PURCHASE]
-    ADD CONSTRAINT [FK_PURCHASE_gamer] FOREIGN KEY ([gamer_username]) REFERENCES [dbo].[GAMER] ([username]);
+ALTER TABLE [dbo].[GAMER_ACHIEVES]
+    ADD CONSTRAINT [FK_GAMER_ACHIEVE_gamer] FOREIGN KEY ([gamer_username]) REFERENCES [dbo].[GAMER] ([username]);
+
+
+GO
+PRINT N'Creating FK_GAMER_ACHIEVE_achievement...';
+
+
+GO
+ALTER TABLE [dbo].[GAMER_ACHIEVES]
+    ADD CONSTRAINT [FK_GAMER_ACHIEVE_achievement] FOREIGN KEY ([ach_game_title], [ach_game_release_date], [ach_title]) REFERENCES [dbo].[ACHIEVEMENT] ([game_title], [game_release_date], [title]);
 
 
 GO
@@ -602,6 +493,114 @@ PRINT N'Creating FK_PURCHASE_OF_BUNDLE_bundle...';
 GO
 ALTER TABLE [dbo].[PURCHASE_OF_BUNDLE]
     ADD CONSTRAINT [FK_PURCHASE_OF_BUNDLE_bundle] FOREIGN KEY ([bundle_name]) REFERENCES [dbo].[BUNDLE] ([name]);
+
+
+GO
+PRINT N'Creating FK_BUNDLE_OF_DLC_bundle...';
+
+
+GO
+ALTER TABLE [dbo].[BUNDLE_OF_DLC]
+    ADD CONSTRAINT [FK_BUNDLE_OF_DLC_bundle] FOREIGN KEY ([bundle_name]) REFERENCES [dbo].[BUNDLE] ([name]);
+
+
+GO
+PRINT N'Creating FK_BUNDLE_OF_DLC_dlc...';
+
+
+GO
+ALTER TABLE [dbo].[BUNDLE_OF_DLC]
+    ADD CONSTRAINT [FK_BUNDLE_OF_DLC_dlc] FOREIGN KEY ([dlc_game_title], [dlc_game_release_date], [dlc_title], [dlc_release_date]) REFERENCES [dbo].[DLC] ([game_title], [game_release_date], [title], [release_date]);
+
+
+GO
+PRINT N'Creating FK_BUNDLE_OF_GAME_bundle...';
+
+
+GO
+ALTER TABLE [dbo].[BUNDLE_OF_GAME]
+    ADD CONSTRAINT [FK_BUNDLE_OF_GAME_bundle] FOREIGN KEY ([bundle_name]) REFERENCES [dbo].[BUNDLE] ([name]);
+
+
+GO
+PRINT N'Creating FK_BUNDLE_OF_GAME_game...';
+
+
+GO
+ALTER TABLE [dbo].[BUNDLE_OF_GAME]
+    ADD CONSTRAINT [FK_BUNDLE_OF_GAME_game] FOREIGN KEY ([game_title], [game_release_date]) REFERENCES [dbo].[GAME] ([title], [release_date]);
+
+
+GO
+PRINT N'Creating FK_ACHIEVEMENT_game...';
+
+
+GO
+ALTER TABLE [dbo].[ACHIEVEMENT]
+    ADD CONSTRAINT [FK_ACHIEVEMENT_game] FOREIGN KEY ([game_title], [game_release_date]) REFERENCES [dbo].[GAME] ([title], [release_date]);
+
+
+GO
+PRINT N'Creating FK_PURCHASE_gamer...';
+
+
+GO
+ALTER TABLE [dbo].[PURCHASE]
+    ADD CONSTRAINT [FK_PURCHASE_gamer] FOREIGN KEY ([gamer_username]) REFERENCES [dbo].[GAMER] ([username]);
+
+
+GO
+PRINT N'Creating FK_GAME_admin...';
+
+
+GO
+ALTER TABLE [dbo].[GAME]
+    ADD CONSTRAINT [FK_GAME_admin] FOREIGN KEY ([admin_username]) REFERENCES [dbo].[ADMIN] ([username]);
+
+
+GO
+PRINT N'Creating FK_GAME_dev...';
+
+
+GO
+ALTER TABLE [dbo].[GAME]
+    ADD CONSTRAINT [FK_GAME_dev] FOREIGN KEY ([dev_username]) REFERENCES [dbo].[DEV] ([username]);
+
+
+GO
+PRINT N'Creating FK_DLC_game...';
+
+
+GO
+ALTER TABLE [dbo].[DLC]
+    ADD CONSTRAINT [FK_DLC_game] FOREIGN KEY ([game_title], [game_release_date]) REFERENCES [dbo].[GAME] ([title], [release_date]);
+
+
+GO
+PRINT N'Creating FK_DLC_admin...';
+
+
+GO
+ALTER TABLE [dbo].[DLC]
+    ADD CONSTRAINT [FK_DLC_admin] FOREIGN KEY ([admin_username]) REFERENCES [dbo].[ADMIN] ([username]);
+
+
+GO
+PRINT N'Creating FK_DLC_dev...';
+
+
+GO
+ALTER TABLE [dbo].[DLC]
+    ADD CONSTRAINT [FK_DLC_dev] FOREIGN KEY ([dev_username]) REFERENCES [dbo].[DEV] ([username]);
+
+
+GO
+PRINT N'Creating FK_BUNDLE_dev...';
+
+
+GO
+ALTER TABLE [dbo].[BUNDLE]
+    ADD CONSTRAINT [FK_BUNDLE_dev] FOREIGN KEY ([dev_username]) REFERENCES [dbo].[DEV] ([username]);
 
 
 GO
@@ -693,7 +692,5 @@ ALTER DATABASE [$(DatabaseName)]
 
 
 GO
-PRINT N'Update complete.';
-
-
+PRINT N'Update complete.'
 GO

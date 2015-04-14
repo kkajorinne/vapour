@@ -16,3 +16,13 @@ C:\Users\Kevin\Documents\Visual Studio 2013\Projects\CPSC471\Database1\obj\Debug
 C:\Users\Kevin\Documents\Visual Studio 2013\Projects\CPSC471\Database1\obj\Debug\CPSC471Project.pdb
 C:\Users\Kevin\Documents\Visual Studio 2013\Projects\CPSC471\Database1\bin\Debug\CPSC471Project.dll
 C:\Users\Kevin\Documents\Visual Studio 2013\Projects\CPSC471\Database1\bin\Debug\CPSC471Project.pdb
+C:\Users\KKajorinne\Documents\Visual Studio 2012\Projects\vapour\Database1\bin\Debug\CPSC471Project.dacpac
+C:\Users\KKajorinne\Documents\Visual Studio 2012\Projects\vapour\Database1\bin\Debug\CPSC471Project_Create.sql
+C:\Users\KKajorinne\Documents\Visual Studio 2012\Projects\vapour\Database1\bin\Debug\CPSC471Project.dll
+C:\Users\KKajorinne\Documents\Visual Studio 2012\Projects\vapour\Database1\bin\Debug\CPSC471Project.pdb
+C:\Users\KKajorinne\Documents\Visual Studio 2012\Projects\vapour\Database1\obj\Debug\CPSC471Project.dll
+C:\Users\KKajorinne\Documents\Visual Studio 2012\Projects\vapour\Database1\obj\Debug\CPSC471Project.pdb
+C:\Users\KKajorinne\Documents\Visual Studio 2012\Projects\vapour\Database1\obj\Debug\Model.xml
+C:\Users\KKajorinne\Documents\Visual Studio 2012\Projects\vapour\Database1\obj\Debug\refactor.xml
+C:\Users\KKajorinne\Documents\Visual Studio 2012\Projects\vapour\Database1\obj\Debug\postdeploy.sql
+C:\Users\KKajorinne\Documents\Visual Studio 2012\Projects\vapour\Database1\obj\Debug\predeploy.sql

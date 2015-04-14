@@ -1,0 +1,51 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[GAMER_FRIENDS] (Table)
+       [dbo].[GAMER_ACHIEVES] (Table)
+       [dbo].[PURCHASE_OF_GAME] (Table)
+       [dbo].[PURCHASE_OF_DLC] (Table)
+       [dbo].[PURCHASE_OF_BUNDLE] (Table)
+       [dbo].[BUNDLE_OF_DLC] (Table)
+       [dbo].[BUNDLE_OF_GAME] (Table)
+       [dbo].[ACHIEVEMENT] (Table)
+       [dbo].[PURCHASE] (Table)
+       [dbo].[ADMIN] (Table)
+       [dbo].[GAME] (Table)
+       [dbo].[DLC] (Table)
+       [dbo].[BUNDLE] (Table)
+       [dbo].[DEV] (Table)
+       [dbo].[GAMER] (Table)
+       [dbo].[FK_GAMER_friend] (Foreign Key)
+       [dbo].[FK_GAMER_friend_of] (Foreign Key)
+       [dbo].[FK_GAMER_ACHIEVE_gamer] (Foreign Key)
+       [dbo].[FK_GAMER_ACHIEVE_achievement] (Foreign Key)
+       [dbo].[FK_PURCHASE_OF_GAME_purchase] (Foreign Key)
+       [dbo].[FK_PURCHASE_OF_GAME_game] (Foreign Key)
+       [dbo].[FK_PURCHASE_OF_DLC_purchase] (Foreign Key)
+       [dbo].[FK_PURCHASE_OF_DLC_dlc] (Foreign Key)
+       [dbo].[FK_PURCHASE_OF_BUNDLE_purchase] (Foreign Key)
+       [dbo].[FK_PURCHASE_OF_BUNDLE_bundle] (Foreign Key)
+       [dbo].[FK_BUNDLE_OF_DLC_bundle] (Foreign Key)
+       [dbo].[FK_BUNDLE_OF_DLC_dlc] (Foreign Key)
+       [dbo].[FK_BUNDLE_OF_GAME_bundle] (Foreign Key)
+       [dbo].[FK_BUNDLE_OF_GAME_game] (Foreign Key)
+       [dbo].[FK_ACHIEVEMENT_game] (Foreign Key)
+       [dbo].[FK_PURCHASE_gamer] (Foreign Key)
+       [dbo].[FK_GAME_admin] (Foreign Key)
+       [dbo].[FK_GAME_dev] (Foreign Key)
+       [dbo].[FK_DLC_game] (Foreign Key)
+       [dbo].[FK_DLC_admin] (Foreign Key)
+       [dbo].[FK_DLC_dev] (Foreign Key)
+       [dbo].[FK_BUNDLE_dev] (Foreign Key)
+
+** Supporting actions
