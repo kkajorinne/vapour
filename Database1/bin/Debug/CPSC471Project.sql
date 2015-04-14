@@ -40,22 +40,6 @@ USE [$(DatabaseName)];
 
 
 GO
-/*
-The column [dbo].[DLC].[ESRB] is being dropped, data loss could occur.
-*/
-
-IF EXISTS (select top 1 1 from [dbo].[DLC])
-    RAISERROR (N'Rows were detected. The schema update is terminating because data loss might occur.', 16, 127) WITH NOWAIT
-
-GO
-PRINT N'Altering [dbo].[DLC]...';
-
-
-GO
-ALTER TABLE [dbo].[DLC] DROP COLUMN [ESRB];
-
-
-GO
 PRINT N'Update complete.';
 
 

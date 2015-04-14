@@ -59,21 +59,10 @@
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
-    <Folder Include="Queries" />
     <Folder Include="Table Creation" />
+    <Folder Include="Queries" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Queries\achievements.sql" />
-    <Build Include="Queries\add_friend.sql" />
-    <Build Include="Queries\admin_approval.sql" />
-    <Build Include="Queries\approved_games.sql" />
-    <Build Include="Queries\gamer_purchases.sql" />
-    <Build Include="Queries\gamers_friendlist.sql" />
-    <Build Include="Queries\pullgamepurchased.sql" />
-    <Build Include="Queries\search_gamers.sql" />
-    <Build Include="Queries\submit_dlc.sql" />
-    <Build Include="Queries\submit_game.sql" />
-    <Build Include="Queries\submit_game1.sql" />
     <Build Include="Table Creation\PURCHASE_OF_GAME.sql" />
     <Build Include="Table Creation\DEV.sql" />
     <Build Include="Table Creation\DLC.sql" />
@@ -83,6 +72,17 @@
     <Build Include="Table Creation\ACHIEVEMENT.sql" />
     <Build Include="Table Creation\ADMIN.sql" />
     <Build Include="Table Creation\BUNDLE.sql" />
+    <None Include="Queries\achievements.sql" />
+    <None Include="Queries\add_friend.sql" />
+    <None Include="Queries\admin_approval.sql" />
+    <None Include="Queries\approved_games.sql" />
+    <None Include="Queries\gamer_purchases.sql" />
+    <None Include="Queries\gamers_friendlist.sql" />
+    <None Include="Queries\pullgamepurchased.sql" />
+    <None Include="Queries\search_gamers.sql" />
+    <None Include="Queries\submit_dlc.sql" />
+    <None Include="Queries\submit_game.sql" />
+    <None Include="Queries\submit_game1.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CPSC471Project.refactorlog" />
