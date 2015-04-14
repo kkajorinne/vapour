@@ -5,7 +5,6 @@
 	[title] VARCHAR(50) NOT NULL , 
     [release_date] DATE NOT NULL, 
     [price] MONEY NULL, 
-    [ESRB] VARCHAR(50) NULL, 
     [description] VARCHAR(MAX) NULL, 
     [data] VARCHAR(50) NULL, 
     [admin_username] VARCHAR(50) NULL, 

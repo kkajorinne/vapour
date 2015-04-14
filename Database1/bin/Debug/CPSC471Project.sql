@@ -15,8 +15,8 @@ SET NUMERIC_ROUNDABORT OFF;
 GO
 :setvar DatabaseName "CPSC471Project"
 :setvar DefaultFilePrefix "CPSC471Project"
-:setvar DefaultDataPath "C:\Users\KKajorinne\AppData\Local\Microsoft\VisualStudio\SSDT\v11.0\CPSC471Project\"
-:setvar DefaultLogPath "C:\Users\KKajorinne\AppData\Local\Microsoft\VisualStudio\SSDT\v11.0\CPSC471Project\"
+:setvar DefaultDataPath "C:\Users\Kevin\AppData\Local\Microsoft\VisualStudio\SSDT\CPSC471Project\"
+:setvar DefaultLogPath "C:\Users\Kevin\AppData\Local\Microsoft\VisualStudio\SSDT\CPSC471Project\"
 
 GO
 :on error exit
@@ -41,7 +41,7 @@ USE [$(DatabaseName)];
 
 GO
 /*
-The column [dbo].[DLC].[genres] is being dropped, data loss could occur.
+The column [dbo].[DLC].[ESRB] is being dropped, data loss could occur.
 */
 
 IF EXISTS (select top 1 1 from [dbo].[DLC])
@@ -52,9 +52,11 @@ PRINT N'Altering [dbo].[DLC]...';
 
 
 GO
-ALTER TABLE [dbo].[DLC] DROP COLUMN [genres];
+ALTER TABLE [dbo].[DLC] DROP COLUMN [ESRB];
 
 
 GO
-PRINT N'Update complete.'
+PRINT N'Update complete.';
+
+
 GO

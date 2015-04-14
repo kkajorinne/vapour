@@ -23,7 +23,7 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
-    <GenerateCreateScript>True</GenerateCreateScript>
+    <GenerateCreateScript>False</GenerateCreateScript>
     <DefaultSchema>dbo</DefaultSchema>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -59,25 +59,40 @@
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="Queries" />
+    <Folder Include="Table Creation" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="GAMER.sql" />
-    <Build Include="DEV.sql" />
-    <Build Include="BUNDLE.sql" />
-    <Build Include="DLC.sql" />
-    <Build Include="GAME.sql" />
-    <Build Include="ADMIN.sql" />
-    <Build Include="PURCHASE.sql" />
-    <Build Include="ACHIEVEMENT.sql" />
-    <Build Include="BUNDLE_OF_GAME.sql" />
-    <Build Include="BUNDLE_OF_DLC.sql" />
-    <Build Include="PURCHASE_OF_BUNDLE.sql" />
-    <Build Include="PURCHASE_OF_DLC.sql" />
-    <Build Include="PURCHASE_OF_GAME.sql" />
-    <Build Include="GAMER_ACHIEVE.sql" />
-    <Build Include="GAMER_FRIEND.sql" />
+    <Build Include="Queries\achievements.sql" />
+    <Build Include="Queries\add_friend.sql" />
+    <Build Include="Queries\admin_approval.sql" />
+    <Build Include="Queries\approved_games.sql" />
+    <Build Include="Queries\gamer_purchases.sql" />
+    <Build Include="Queries\gamers_friendlist.sql" />
+    <Build Include="Queries\pullgamepurchased.sql" />
+    <Build Include="Queries\search_gamers.sql" />
+    <Build Include="Queries\submit_dlc.sql" />
+    <Build Include="Queries\submit_game.sql" />
+    <Build Include="Queries\submit_game1.sql" />
+    <Build Include="Table Creation\PURCHASE_OF_GAME.sql" />
+    <Build Include="Table Creation\DEV.sql" />
+    <Build Include="Table Creation\DLC.sql" />
+    <Build Include="Table Creation\GAME.sql" />
+    <Build Include="Table Creation\GAMER.sql" />
+    <Build Include="Table Creation\BUNDLE_OF_GAME.sql" />
+    <Build Include="Table Creation\ACHIEVEMENT.sql" />
+    <Build Include="Table Creation\ADMIN.sql" />
+    <Build Include="Table Creation\BUNDLE.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CPSC471Project.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Table Creation\GAMER_ACHIEVE.sql" />
+    <Build Include="Table Creation\GAMER_FRIEND.sql" />
+    <Build Include="Table Creation\PURCHASE.sql" />
+    <Build Include="Table Creation\PURCHASE_OF_BUNDLE.sql" />
+    <Build Include="Table Creation\PURCHASE_OF_DLC.sql" />
+    <Build Include="Table Creation\BUNDLE_OF_DLC.sql" />
   </ItemGroup>
 </Project>

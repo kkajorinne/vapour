@@ -12,7 +12,7 @@
 		</CustomData>
 		<CustomData Category="Reference" Type="Assembly">
 			<Metadata Name="LogicalName" Value="CPSC471Project.dll" />
-			<Metadata Name="FileName" Value="C:\USERS\KKAJORINNE\DOCUMENTS\VISUAL STUDIO 2012\PROJECTS\VAPOUR\DATABASE1\OBJ\DEBUG\CPSC471PROJECT.DLL" />
+			<Metadata Name="FileName" Value="C:\USERS\KEVIN\DOCUMENTS\VISUAL STUDIO 2013\PROJECTS\CPSC471\DATABASE1\OBJ\DEBUG\CPSC471PROJECT.DLL" />
 			<Metadata Name="AssemblyName" Value="CPSC471Project" />
 			<Metadata Name="PermissionSet" Value="SAFE" />
 			<Metadata Name="Owner" Value="" />
@@ -20,7 +20,7 @@
 			<Metadata Name="IsVisible" Value="True" />
 			<Metadata Name="IsModelAware" Value="True" />
 			<Metadata Name="SkipCreationIfEmpty" Value="True" />
-			<Metadata Name="AssemblySymbolsName" Value="C:\Users\KKajorinne\Documents\Visual Studio 2012\Projects\vapour\Database1\obj\Debug\CPSC471Project.pdb" />
+			<Metadata Name="AssemblySymbolsName" Value="C:\Users\Kevin\Documents\Visual Studio 2013\Projects\CPSC471\Database1\obj\Debug\CPSC471Project.pdb" />
 		</CustomData>
 		<CustomData Category="SqlCmdVariables" Type="SqlCmdVariable" />
 	</Header>
@@ -1133,22 +1133,6 @@
 									<Relationship Name="Type">
 										<Entry>
 											<References ExternalSource="BuiltIns" Name="[money]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[DLC].[ESRB]">
-						<Relationship Name="TypeSpecifier">
-							<Entry>
-								<Element Type="SqlTypeSpecifier">
-									<Property Name="Length" Value="50" />
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[varchar]" />
 										</Entry>
 									</Relationship>
 								</Element>
