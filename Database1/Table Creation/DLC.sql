@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[DLC]
 (
 	[game_title] VARCHAR(50) NOT NULL , 
-    [game_release_date] VARCHAR(50) NOT NULL, 
+    [game_release_date] DATE NOT NULL, 
 	[title] VARCHAR(50) NOT NULL , 
     [release_date] DATE NOT NULL, 
     [price] MONEY NULL, 
