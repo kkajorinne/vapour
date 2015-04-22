@@ -83,6 +83,7 @@
     <None Include="Queries\submit_dlc.sql" />
     <None Include="Queries\submit_game.sql" />
     <None Include="Queries\submit_game1.sql" />
+    <None Include="Queries\test2.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="CPSC471Project.refactorlog" />
@@ -94,5 +95,8 @@
     <Build Include="Table Creation\PURCHASE_OF_BUNDLE.sql" />
     <Build Include="Table Creation\PURCHASE_OF_DLC.sql" />
     <Build Include="Table Creation\BUNDLE_OF_DLC.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Queries\test.sql" />
   </ItemGroup>
 </Project>
